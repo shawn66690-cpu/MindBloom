@@ -1,786 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>MindBloom 🌺</title>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: "DM Sans", sans-serif;
-    background: #fff9f5;
-    color: #302b3d;
-}
-
-/* HEADER */
-
-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(255,255,255,0.94);
-    backdrop-filter: blur(12px);
-    padding: 16px 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 3px 20px rgba(60,40,70,0.08);
-}
-
-.logo {
-    font-family: "Playfair Display", serif;
-    font-size: 27px;
-    font-weight: 700;
-}
-
-.logo span {
-    margin-left: 5px;
-}
-
-nav a {
-    color: #40384d;
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: 600;
-}
-
-/* HERO */
-
-.hero {
-    min-height: 620px;
-    padding: 90px 8% 100px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            rgba(255,245,238,0.65),
-            rgba(247,238,255,0.78)
-        );
-}
-
-.flower {
-    position: absolute;
-    font-size: 75px;
-    opacity: 0.18;
-}
-
-.flower.one {
-    top: 70px;
-    left: 7%;
-}
-
-.flower.two {
-    bottom: 70px;
-    right: 8%;
-}
-
-.hero-content {
-    max-width: 750px;
-    margin: auto;
-    position: relative;
-    z-index: 2;
-}
-
-.small-title {
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-}
-
-.hero h1 {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(48px, 9vw, 82px);
-    line-height: 1;
-    margin-bottom: 22px;
-}
-
-.hero h1 span {
-    display: block;
-}
-
-.hero p {
-    max-width: 610px;
-    margin: auto;
-    font-size: 19px;
-    line-height: 1.7;
-}
-
-.hero-buttons {
-    margin-top: 32px;
-}
-
-.button {
-    display: inline-block;
-    padding: 14px 25px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 700;
-    margin: 5px;
-}
-
-.primary {
-    background: #5e4b8b;
-    color: white;
-}
-
-.secondary {
-    background: white;
-    color: #5e4b8b;
-    box-shadow: 0 5px 18px rgba(70,50,80,0.12);
-}
-
-/* WAVES */
-
-.wave {
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 80px;
-    background: #dfeaf7;
-    border-radius: 50% 50% 0 0;
-}
-
-/* SECTIONS */
-
-section.content {
-    padding: 75px 7%;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.section-title h2 {
-    font-family: "Playfair Display", serif;
-    font-size: 38px;
-    margin-bottom: 10px;
-}
-
-.section-title p {
-    color: #746d7c;
-}
-
-/* SUBJECTS */
-
-.subject-grid {
-    max-width: 1100px;
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(210px, 1fr));
-
-    gap: 20px;
-}
-
-.subject {
-    background: white;
-    padding: 28px;
-    border-radius: 22px;
-
-    box-shadow:
-        0 8px 25px rgba(70,50,80,0.08);
-
-    transition: 0.25s;
-}
-
-.subject:hover {
-    transform: translateY(-7px);
-}
-
-.subject-icon {
-    font-size: 35px;
-    margin-bottom: 15px;
-}
-
-.subject h3 {
-    margin-bottom: 9px;
-}
-
-.subject p {
-    color: #746d7c;
-    line-height: 1.5;
-    margin-bottom: 18px;
-}
-
-.subject a {
-    color: #5e4b8b;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-/* RESOURCES */
-
-.resources {
-    max-width: 1050px;
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(240px, 1fr));
-
-    gap: 22px;
-}
-
-.resource {
-    padding: 28px;
-    border-radius: 24px;
-    background: #f4edf9;
-}
-
-.resource:nth-child(2) {
-    background: #eef5fb;
-}
-
-.resource:nth-child(3) {
-    background: #fff1ed;
-}
-
-.resource h3 {
-    margin: 12px 0;
-}
-
-.resource p {
-    color: #6f6877;
-    line-height: 1.5;
-}
-
-/* STUDENT VOICE */
-
-.voice {
-    max-width: 850px;
-    margin: auto;
-    padding: 45px 30px;
-    border-radius: 30px;
-    text-align: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #f6eafb,
-            #eaf4fb
-        );
-
-    box-shadow:
-        0 10px 30px rgba(70,50,80,0.08);
-}
-
-.voice-icon {
-    font-size: 45px;
-    margin-bottom: 15px;
-}
-
-.voice h2 {
-    font-family: "Playfair Display", serif;
-    font-size: 35px;
-    margin-bottom: 12px;
-}
-
-.voice p {
-    max-width: 600px;
-    margin: auto;
-    line-height: 1.6;
-    color: #6e6677;
-}
-
-.feedback-button {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 14px 28px;
-    border-radius: 30px;
-    background: #5e4b8b;
-    color: white;
-    text-decoration: none;
-    font-weight: 700;
-}
-
-/* PINTEREST */
-
-.pinterest-box {
-    max-width: 850px;
-    margin: auto;
-    text-align: center;
-    padding: 40px 25px;
-    border-radius: 28px;
-    background: white;
-
-    box-shadow:
-        0 8px 25px rgba(70,50,80,0.08);
-}
-
-.pinterest-box h2 {
-    font-family: "Playfair Display", serif;
-    font-size: 34px;
-    margin-bottom: 12px;
-}
-
-.pinterest-box p {
-    color: #6e6677;
-    line-height: 1.6;
-}
-
-/* FOOTER */
-
-footer {
-    margin-top: 40px;
-    padding: 45px 20px;
-    text-align: center;
-    background: #eee8f5;
-}
-
-.footer-logo {
-    font-family: "Playfair Display", serif;
-    font-size: 25px;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-footer p {
-    color: #746d7c;
-    margin: 6px;
-}
-
-/* MOBILE */
-
-@media (max-width: 650px) {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindBloom 🌱</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f8f3;
+      color: #26352b;
+      line-height: 1.6;
+    }
 
     header {
-        padding: 15px 5%;
+      background: #dcebdc;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 38px;
+    }
+
+    header p {
+      margin-top: 5px;
     }
 
     nav {
-        display: none;
+      background: white;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
     }
 
-    .hero {
-        min-height: 580px;
-        padding: 75px 20px;
+    nav a {
+      text-decoration: none;
+      color: #26352b;
+      margin: 0 10px;
+      font-weight: bold;
     }
 
-    .hero p {
-        font-size: 17px;
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px 20px;
     }
 
-    section.content {
-        padding: 60px 5%;
+    .welcome {
+      text-align: center;
+      margin-bottom: 35px;
     }
 
-    .section-title h2 {
-        font-size: 32px;
+    .subjects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
     }
 
-    .voice h2 {
-        font-size: 30px;
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      text-decoration: none;
+      color: #26352b;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
-}
-</style>
+
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+    }
+
+    section {
+      background: white;
+      margin-top: 35px;
+      padding: 25px;
+      border-radius: 18px;
+    }
+
+    section h2 {
+      margin-bottom: 15px;
+    }
+
+    section h3 {
+      margin-top: 20px;
+    }
+
+    li {
+      margin-left: 25px;
+      margin-bottom: 5px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 30px;
+      background: #dcebdc;
+    }
+  </style>
 </head>
-
 
 <body>
 
-<!-- HEADER -->
-
 <header>
-
-    <div class="logo">
-        MindBloom <span>🌺</span>
-    </div>
-
-    <nav>
-        <a href="#subjects">Subjects</a>
-        <a href="#resources">Resources</a>
-        <a href="#voice">Student Voice</a>
-    </nav>
-
+  <h1>🌱 MindBloom</h1>
+  <p>Learn • Revise • Grow</p>
 </header>
 
-
-<!-- HERO -->
-
-<section class="hero">
-
-    <div class="flower one">🌺</div>
-    <div class="flower two">🌺</div>
-
-    <div class="hero-content">
-
-        <div class="small-title">
-            Welcome to MindBloom
-        </div>
-
-        <h1>
-            Learn.
-            <span>Grow. Bloom. 🌊</span>
-        </h1>
-
-        <p>
-            A calm little corner for students to learn,
-            revise and grow — one topic at a time.
-        </p>
-
-        <div class="hero-buttons">
-
-            <a href="#subjects" class="button primary">
-                Start Learning
-            </a>
-
-            <a href="#voice" class="button secondary">
-                💬 Student Voice
-            </a>
-
-        </div>
-
-    </div>
-
-    <div class="wave"></div>
-
-</section>
-
-
-<!-- SUBJECTS -->
-
-<section class="content" id="subjects">
-
-    <div class="section-title">
-
-        <h2>📚 Explore & Learn</h2>
-
-        <p>
-            Choose a subject and start your learning journey.
-        </p>
-
-    </div>
-
-
-    <div class="subject-grid">
-
-
-        <!-- MATHS -->
-
-        <div class="subject">
-
-            <div class="subject-icon">➗</div>
-
-            <h3>Mathematics</h3>
-
-            <p>
-                Formulas, concepts, examples and
-                revision guides.
-            </p>
-
-            <a href="#">
-                Explore Maths →
-            </a>
-
-        </div>
-
-
-        <!-- BUSINESS -->
-
-        <div class="subject">
-
-            <div class="subject-icon">💼</div>
-
-            <h3>Business Studies</h3>
-
-            <p>
-                Business concepts, case studies,
-                exam tips and revision.
-            </p>
-
-            <a href="#">
-                Explore Business →
-            </a>
-
-        </div>
-
-
-        <!-- ECONOMICS -->
-
-        <div class="subject">
-
-            <div class="subject-icon">📈</div>
-
-            <h3>Economics</h3>
-
-            <p>
-                Simple explanations of economics
-                concepts and theories.
-            </p>
-
-            <a href="#">
-                Explore Economics →
-            </a>
-
-        </div>
-
-
-        <!-- ACCOUNTING -->
-
-        <div class="subject">
-
-            <div class="subject-icon">🧾</div>
-
-            <h3>Accounting</h3>
-
-            <p>
-                Learn accounting concepts,
-                calculations and principles.
-            </p>
-
-            <a href="#">
-                Explore Accounting →
-            </a>
-
-        </div>
-
-
-        <!-- BIOLOGY -->
-
-        <div class="subject">
-
-            <div class="subject-icon">🧬</div>
-
-            <h3>Biology</h3>
-
-            <p>
-                Explore living organisms, systems,
-                cells and biological processes.
-            </p>
-
-            <a href="#">
-                Explore Biology →
-            </a>
-
-        </div>
-
-
-        <!-- PHYSICS -->
-
-        <div class="subject">
-
-            <div class="subject-icon">⚛️</div>
-
-            <h3>Physics</h3>
-
-            <p>
-                Understand forces, energy,
-                electricity and the universe.
-            </p>
-
-            <a href="#">
-                Explore Physics →
-            </a>
-
-        </div>
-
-
-        <!-- COMPUTER SCIENCE -->
-
-        <div class="subject">
-
-            <div class="subject-icon">💻</div>
-
-            <h3>Computer Science</h3>
-
-            <p>
-                Learn algorithms, programming,
-                data and computer systems.
-            </p>
-
-            <a href="#">
-                Explore Computer Science →
-            </a>
-
-        </div>
-
-
-        <!-- CHEMISTRY -->
-
-        <div class="subject">
-
-            <div class="subject-icon">🧪</div>
-
-            <h3>Chemistry</h3>
-
-            <p>
-                Learn atoms, reactions, bonding
-                and chemical calculations.
-            </p>
-
-            <a href="#">
-                Explore Chemistry →
-            </a>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- RESOURCES -->
-
-<section class="content" id="resources">
-
-    <div class="section-title">
-
-        <h2>🌱 Study Resources</h2>
-
-        <p>
-            Small tools that can make studying easier.
-        </p>
-
-    </div>
-
-
-    <div class="resources">
-
-        <div class="resource">
-
-            <div>🗓️</div>
-
-            <h3>Study Planner</h3>
-
-            <p>
-                Organise your subjects and
-                create a revision routine.
-            </p>
-
-        </div>
-
-
-        <div class="resource">
-
-            <div>✅</div>
-
-            <h3>Revision Checklist</h3>
-
-            <p>
-                Keep track of the topics you've
-                completed.
-            </p>
-
-        </div>
-
-
-        <div class="resource">
-
-            <div>🧠</div>
-
-            <h3>Study Techniques</h3>
-
-            <p>
-                Discover active recall, spaced
-                repetition and other methods.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- STUDENT VOICE -->
-
-<section class="content" id="voice">
-
-    <div class="voice">
-
-        <div class="voice-icon">
-            💬
-        </div>
-
-        <h2>Your Voice Matters</h2>
-
-        <p>
-            MindBloom is made for students.
-            Tell us what you want to learn,
-            what resources you need and
-            what we could improve.
-        </p>
-
-        <a
-            href="#"
-            class="feedback-button"
-        >
-            Give Feedback 🌺
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- PINTEREST -->
-
-<section class="content">
-
-    <div class="pinterest-box">
-
-        <h2>📌 Find MindBloom on Pinterest</h2>
-
-        <p>
-            Discover study ideas, revision tips,
-            free resources and aesthetic study inspiration.
-        </p>
-
-        <a
-            href="#"
-            class="button primary"
-        >
-            Visit Pinterest →
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- FOOTER -->
+<nav>
+  <a href="#home">Home</a>
+  <a href="#notes">Notes</a>
+  <a href="#planner">Planner</a>
+</nav>
+
+<main id="home">
+
+  <div class="welcome">
+    <h2>Welcome to MindBloom 📚</h2>
+    <p>Your simple study space for notes and revision.</p>
+  </div>
+
+  <div class="subjects" id="notes">
+
+    <a class="card" href="#maths">
+      <h3>📐 Mathematics</h3>
+      <p>IGCSE Maths notes</p>
+    </a>
+
+    <a class="card" href="#business">
+      <h3>💼 Business</h3>
+      <p>Business Studies notes</p>
+    </a>
+
+    <a class="card" href="#economics">
+      <h3>📈 Economics</h3>
+      <p>Economics notes</p>
+    </a>
+
+    <a class="card" href="#accounting">
+      <h3>🧮 Accounting</h3>
+      <p>Accounting notes</p>
+    </a>
+
+    <a class="card" href="#cs">
+      <h3>💻 Computer Science</h3>
+      <p>CS notes</p>
+    </a>
+
+  </div>
+
+  <section id="maths">
+    <h2>📐 Mathematics Notes</h2>
+
+    <h3>Algebra</h3>
+    <ul>
+      <li>Linear equations</li>
+      <li>Simultaneous equations</li>
+      <li>Quadratic equations</li>
+      <li>Factorising</li>
+      <li>Algebraic fractions</li>
+    </ul>
+
+    <h3>Number</h3>
+    <ul>
+      <li>Fractions</li>
+      <li>Percentages</li>
+      <li>Ratio and proportion</li>
+      <li>Standard form</li>
+    </ul>
+  </section>
+
+  <section id="business">
+    <h2>💼 Business Studies Notes</h2>
+
+    <h3>People in Business</h3>
+    <ul>
+      <li>Motivation</li>
+      <li>Recruitment</li>
+      <li>Training</li>
+      <li>Leadership</li>
+    </ul>
+
+    <h3>Marketing</h3>
+    <ul>
+      <li>Market research</li>
+      <li>Marketing mix</li>
+      <li>Product</li>
+      <li>Price</li>
+      <li>Promotion</li>
+      <li>Place</li>
+    </ul>
+  </section>
+
+  <section id="economics">
+    <h2>📈 Economics Notes</h2>
+
+    <h3>Basic Economics</h3>
+    <ul>
+      <li>Scarcity</li>
+      <li>Opportunity cost</li>
+      <li>Factors of production</li>
+      <li>Production possibility curve</li>
+    </ul>
+
+    <h3>Government</h3>
+    <ul>
+      <li>Taxes</li>
+      <li>Government spending</li>
+      <li>Inflation</li>
+      <li>Unemployment</li>
+    </ul>
+  </section>
+
+  <section id="accounting">
+    <h2>🧮 Accounting Notes</h2>
+
+    <h3>Basics</h3>
+    <ul>
+      <li>Assets</li>
+      <li>Liabilities</li>
+      <li>Capital</li>
+      <li>Revenue</li>
+      <li>Expenses</li>
+    </ul>
+  </section>
+
+  <section id="cs">
+    <h2>💻 Computer Science Notes</h2>
+
+    <h3>Computer Systems</h3>
+    <ul>
+      <li>CPU</li>
+      <li>Memory</li>
+      <li>Storage</li>
+      <li>Input and output devices</li>
+    </ul>
+  </section>
+
+  <section id="planner">
+    <h2>📅 Study Planner</h2>
+    <ul>
+      <li>Choose today's subjects</li>
+      <li>Set a study goal</li>
+      <li>Revise your notes</li>
+      <li>Complete practice questions</li>
+      <li>Review what you learned</li>
+    </ul>
+  </section>
+
+</main>
 
 <footer>
-
-    <div class="footer-logo">
-        MindBloom 🌺
-    </div>
-
-    <p>
-        Learn. Grow. Bloom.
-    </p>
-
-    <p>
-        Made with curiosity, kindness and a little sunshine. 🌅
-    </p>
-
-    <p>
-        © 2026 MindBloom
-    </p>
-
+  <p>🌱 MindBloom — Learn • Revise • Grow</p>
 </footer>
 
 </body>
